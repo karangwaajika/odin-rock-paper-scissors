@@ -14,4 +14,19 @@ function getComputerChoice(){
    
 }
 
-console.log(getComputerChoice());
+function playRound(playerSelection, computerSelection) {
+    let lowerCasePlayerSelection = playerSelection.toLowerCase();
+    let playerChoice = lowerCasePlayerSelection.replace(lowerCasePlayerSelection[0], lowerCasePlayerSelection[0].toUpperCase())
+    if (playerChoice == "Paper" || playerChoice == "Rock" || playerChoice == "Scissors"){
+        return `Player: ${playerChoice} and Computer: ${computerSelection}`;
+
+    }
+    else{
+        return "Player Selection is invalid";
+    }
+  }
+   
+  const playerSelection = "rock";
+  const computerSelection = getComputerChoice();
+  console.log(playRound(playerSelection, computerSelection));
+
