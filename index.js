@@ -1,3 +1,4 @@
+const playerSelection = "scisSors";
 function getComputerChoice(){
     let maxValue = 3;
     let minValue = 1;
@@ -53,8 +54,13 @@ function playRound(playerSelection, computerSelection) {
         return "Player Selection is invalid";
     }
   }
+
+  function game(){
+    for(let i = 1;  i <= 5; i++){
+        const computerSelection = getComputerChoice();
+        console.log(playRound(playerSelection, computerSelection));
+    }
+  }
    
-  const playerSelection = "scisSors";
-  const computerSelection = getComputerChoice();
-  console.log(playRound(playerSelection, computerSelection));
+game();
 
