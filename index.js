@@ -1,4 +1,4 @@
-const playerSelection = "scisSors";
+const playerSelection = prompt("Player selection: ");
 function getComputerChoice(){
     let maxValue = 3;
     let minValue = 1;
@@ -51,16 +51,53 @@ function playRound(playerSelection, computerSelection) {
 
     }
     else{
-        return "Player Selection is invalid";
+        return "Invalid";
     }
   }
 
   function game(){
+    let result = "";
+    let playerScore = 0;
+    let computerScore = 0;
+    let gameNull=0;
+    let noGame=0;
     for(let i = 1;  i <= 5; i++){
         const computerSelection = getComputerChoice();
+        let message = playRound(playerSelection, computerSelection);
+        let resultMessage = message.slice(0, 8); 
+        if(resultMessage == "You Win!"){
+            playerScore ++;
+        }
+        else if(resultMessage == "You Lose"){
+            computerScore ++;
+        }
+        else if(resultMessage == "Invalid"){
+            noGame ++;
+        }
+        else{
+            gameNull ++;
+        }
         console.log(playRound(playerSelection, computerSelection));
+        
+    }
+    if(noGame){
+        console.log("You might have spelled the word wrongly"); 
+    }
+    else{
+    
+        if(playerScore > computerScore){
+            result = "You won!";
+        }
+        else if(playerScore < computerScore){
+            result = "You lost!"
+        }
+        else{
+            result = "No winner, Match Null";
+        }
+        console.log(`Game Details: wins:${playerScore} , Null = ${gameNull} and loss = ${computerScore} , so ${result}`);
     }
   }
    
 game();
+
 
